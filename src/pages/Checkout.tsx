@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CreditCard, User, Home, Check } from 'lucide-react';
+import { User, Home, Check } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import CustomButton from '@/components/ui/CustomButton';
@@ -44,13 +44,6 @@ const Checkout: React.FC = () => {
     zipCode: '',
   });
   
-  const [paymentInfo, setPaymentInfo] = useState({
-    cardNumber: '',
-    cardName: '',
-    expiryDate: '',
-    cvv: '',
-  });
-  
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -69,11 +62,7 @@ const Checkout: React.FC = () => {
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    if (name.includes('card')) {
-      setPaymentInfo(prev => ({ ...prev, [name]: value }));
-    } else {
-      setBillingInfo(prev => ({ ...prev, [name]: value }));
-    }
+    setBillingInfo(prev => ({ ...prev, [name]: value }));
   };
   
   const handleSubmit = async (e: React.FormEvent) => {
@@ -123,7 +112,7 @@ const Checkout: React.FC = () => {
         if (invoiceError) throw invoiceError;
         
         toast({
-          title: "Payment successful!",
+          title: "Order successful!",
           description: "Your order has been placed and an invoice has been sent to your email.",
         });
         
@@ -131,7 +120,7 @@ const Checkout: React.FC = () => {
       } catch (error: any) {
         console.error('Error processing order:', error);
         toast({
-          title: "Error processing payment",
+          title: "Error processing order",
           description: error.message,
           variant: "destructive",
         });
@@ -231,72 +220,13 @@ const Checkout: React.FC = () => {
                   </div>
                 </div>
                 
-                {/* Payment Information */}
-                <div className="glass-morphism rounded-lg p-6">
-                  <div className="flex items-center mb-4">
-                    <CreditCard className="h-5 w-5 mr-2 text-primary" />
-                    <h2 className="text-xl font-medium">Payment Method</h2>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2 md:col-span-2">
-                      <Label htmlFor="cardNumber">Card Number</Label>
-                      <Input 
-                        id="cardNumber" 
-                        name="cardNumber" 
-                        value={paymentInfo.cardNumber} 
-                        onChange={handleChange} 
-                        placeholder="1234 5678 9012 3456" 
-                        required 
-                      />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="cardName">Cardholder Name</Label>
-                      <Input 
-                        id="cardName" 
-                        name="cardName" 
-                        value={paymentInfo.cardName} 
-                        onChange={handleChange} 
-                        required 
-                      />
-                    </div>
-                    
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="expiryDate">Expiry Date</Label>
-                        <Input 
-                          id="expiryDate" 
-                          name="expiryDate" 
-                          value={paymentInfo.expiryDate} 
-                          onChange={handleChange} 
-                          placeholder="MM/YY" 
-                          required 
-                        />
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <Label htmlFor="cvv">CVV</Label>
-                        <Input 
-                          id="cvv" 
-                          name="cvv" 
-                          value={paymentInfo.cvv} 
-                          onChange={handleChange} 
-                          placeholder="123" 
-                          required 
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
                 <CustomButton 
                   type="submit" 
                   className="w-full md:w-auto" 
                   size="lg"
                   isLoading={isProcessing}
                 >
-                  {isProcessing ? 'Processing...' : 'Complete Payment'}
+                  {isProcessing ? 'Processing...' : 'Place Order'}
                 </CustomButton>
               </form>
             </div>
