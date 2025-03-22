@@ -1,11 +1,13 @@
 
 import React from 'react';
 import { ShoppingBag, ChevronLeft, Trash, Plus, Minus } from 'lucide-react';
+import { Navigate } from 'react-router-dom';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import CustomButton from '@/components/ui/CustomButton';
 import LinkButton from '@/components/ui/LinkButton';
 import { toast } from '@/hooks/use-toast';
+import { useAuth } from '@/contexts/AuthContext';
 
 // This is a demo cart for now
 const cartItems = [
@@ -26,6 +28,8 @@ const cartItems = [
 ];
 
 const Cart: React.FC = () => {
+  const { user } = useAuth();
+  
   const handleRemoveItem = (id: number) => {
     // Would normally remove the item from cart state
     toast({
@@ -142,13 +146,23 @@ const Cart: React.FC = () => {
                     </div>
                   </div>
                   
-                  <LinkButton 
-                    className="w-full mt-6"
-                    size="lg"
-                    to="/checkout"
-                  >
-                    Proceed to Checkout
-                  </LinkButton>
+                  {user ? (
+                    <LinkButton 
+                      className="w-full mt-6"
+                      size="lg"
+                      to="/checkout"
+                    >
+                      Proceed to Checkout
+                    </LinkButton>
+                  ) : (
+                    <LinkButton 
+                      className="w-full mt-6"
+                      size="lg"
+                      to="/auth"
+                    >
+                      Sign In to Checkout
+                    </LinkButton>
+                  )}
                 </div>
               </div>
             </div>
