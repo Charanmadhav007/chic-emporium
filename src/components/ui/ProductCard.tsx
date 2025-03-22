@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
 import { Product } from '@/types';
-import Button from '@/components/ui/Button';
+import CustomButton from '@/components/ui/CustomButton';
 import { toast } from '@/hooks/use-toast';
 
 interface ProductCardProps {
@@ -35,14 +35,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         
         {/* Add to cart overlay button */}
         <div className="absolute bottom-0 left-0 right-0 flex justify-center p-4 translate-y-full transition-transform duration-300 ease-in-out group-hover:translate-y-0">
-          <Button
+          <CustomButton
             onClick={handleAddToCart}
             className="w-full animate-fade-in"
             variant="primary"
             size="sm"
           >
             <ShoppingCart className="mr-2 h-4 w-4" /> Add to Cart
-          </Button>
+          </CustomButton>
         </div>
       </div>
       

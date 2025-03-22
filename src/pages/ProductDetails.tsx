@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ShoppingCart, ChevronLeft, Minus, Plus, Heart } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import Button from '@/components/ui/Button';
+import CustomButton from '@/components/ui/CustomButton';
 import { getProductById } from '@/lib/data';
 import { toast } from '@/hooks/use-toast';
 
@@ -121,13 +120,13 @@ const ProductDetails: React.FC = () => {
                 
                 {/* Add to Cart */}
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button 
+                  <CustomButton 
                     onClick={handleAddToCart}
                     className="flex-1 w-full"
                     size="lg"
                   >
                     <ShoppingCart className="mr-2 h-5 w-5" /> Add to Cart
-                  </Button>
+                  </CustomButton>
                   <Button 
                     variant="outline"
                     className="flex-none"

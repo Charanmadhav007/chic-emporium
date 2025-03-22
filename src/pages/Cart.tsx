@@ -3,7 +3,7 @@ import React from 'react';
 import { ShoppingBag, ChevronLeft, Trash, Plus, Minus } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import Button from '@/components/ui/Button';
+import CustomButton from '@/components/ui/CustomButton';
 import LinkButton from '@/components/ui/LinkButton';
 import { toast } from '@/hooks/use-toast';
 

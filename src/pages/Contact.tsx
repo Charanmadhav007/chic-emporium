@@ -1,9 +1,8 @@
-
 import React, { useState } from 'react';
 import { MapPin, Phone, Mail, MessageSquare } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import Button from '@/components/ui/Button';
+import CustomButton from '@/components/ui/CustomButton';
 import { toast } from '@/hooks/use-toast';
 
 const Contact: React.FC = () => {
@@ -178,13 +177,13 @@ const Contact: React.FC = () => {
                   />
                 </div>
                 
-                <Button 
+                <CustomButton 
                   type="submit" 
                   className="w-full"
                   isLoading={isSubmitting}
                 >
                   Send Message
-                </Button>
+                </CustomButton>
               </form>
             </div>
           </div>
