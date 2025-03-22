@@ -87,7 +87,7 @@ const ProductDetails: React.FC = () => {
             {/* Product Details */}
             <div className="flex flex-col">
               <h1 className="text-3xl md:text-4xl font-display font-bold">{product.name}</h1>
-              <div className="mt-4 text-2xl font-semibold text-accent">${product.price.toFixed(2)}</div>
+              <div className="mt-4 text-2xl font-semibold text-accent">Rs {product.price.toFixed(2)}</div>
               
               <div className="my-8 text-muted-foreground">
                 <p>{product.description}</p>

@@ -51,7 +51,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <h3 className="text-lg font-medium tracking-tight text-foreground truncate group-hover:text-primary transition-colors">
             {product.name}
           </h3>
-          <p className="text-xl font-semibold mt-1 text-accent">${product.price.toFixed(2)}</p>
+          <p className="text-xl font-semibold mt-1 text-accent">Rs {product.price.toFixed(2)}</p>
         </Link>
       </div>
     </div>
