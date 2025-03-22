@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ShoppingCart, ChevronLeft, Minus, Plus, Heart } from 'lucide-react';
@@ -127,13 +128,13 @@ const ProductDetails: React.FC = () => {
                   >
                     <ShoppingCart className="mr-2 h-5 w-5" /> Add to Cart
                   </CustomButton>
-                  <Button 
+                  <CustomButton 
                     variant="outline"
                     className="flex-none"
                     size="lg"
                   >
                     <Heart className="h-5 w-5" />
-                  </Button>
+                  </CustomButton>
                 </div>
               </div>
             </div>
