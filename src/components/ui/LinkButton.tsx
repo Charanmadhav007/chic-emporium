@@ -1,10 +1,9 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Button from './Button';
+import { Link, LinkProps } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
-interface LinkButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface LinkButtonProps {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   children: React.ReactNode;
@@ -13,9 +12,9 @@ interface LinkButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
   to: string;
 }
 
-const LinkButton = React.forwardRef<HTMLButtonElement, LinkButtonProps>(
+const LinkButton = React.forwardRef<HTMLAnchorElement, LinkButtonProps & Omit<LinkProps, 'to'> & { to: string }>(
   ({ variant = 'primary', size = 'md', children, className, isLoading, to, ...props }, ref) => {
-    // Use all the styling from the Button component
+    
     const baseStyles = "relative inline-flex items-center justify-center rounded-md font-medium transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background disabled:pointer-events-none disabled:opacity-50";
     
     const variantStyles = {
@@ -34,6 +33,7 @@ const LinkButton = React.forwardRef<HTMLButtonElement, LinkButtonProps>(
     return (
       <Link 
         to={to}
+        ref={ref}
         className={cn(
           baseStyles,
           variantStyles[variant],
