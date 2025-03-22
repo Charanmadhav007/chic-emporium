@@ -67,7 +67,7 @@ const ProfileForm = () => {
           full_name: profile.full_name,
           phone: profile.phone,
           address: profile.address,
-          updated_at: new Date(),
+          updated_at: new Date().toISOString(), // Convert Date to ISO string format
         })
         .eq('id', user?.id);
         
