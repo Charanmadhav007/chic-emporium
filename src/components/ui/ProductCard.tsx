@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
 import { Product } from '@/types';
-import Button from './Button';
+import Button from '@/components/ui/Button';
 import { toast } from '@/hooks/use-toast';
 
 interface ProductCardProps {
