@@ -1,8 +1,8 @@
 
 import React from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
-import Button from "@/components/ui/Button";
+import LinkButton from "@/components/ui/LinkButton";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
@@ -27,9 +27,9 @@ const NotFound: React.FC = () => {
           <p className="text-muted-foreground max-w-md mx-auto mb-10">
             The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
           </p>
-          <Button as={Link} to="/" size="lg">
+          <LinkButton to="/" size="lg">
             <ChevronLeft className="mr-2 h-5 w-5" /> Return to Home
-          </Button>
+          </LinkButton>
         </div>
       </main>
       

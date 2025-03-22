@@ -1,8 +1,8 @@
 
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import Button from '@/components/ui/Button';
+import LinkButton from '@/components/ui/LinkButton';
 
 const Hero: React.FC = () => {
   return (
@@ -30,12 +30,12 @@ const Hero: React.FC = () => {
             Discover our curated collection of premium clothing designed for the modern gentleman who values quality, style, and sophistication.
           </p>
           <div className="flex flex-wrap gap-4">
-            <Button size="lg" as={Link} to="/shop">
+            <LinkButton size="lg" to="/shop">
               Shop Collection <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button size="lg" variant="outline" as={Link} to="/about">
+            </LinkButton>
+            <LinkButton size="lg" variant="outline" to="/about">
               Our Story
-            </Button>
+            </LinkButton>
           </div>
         </div>
       </div>

@@ -1,10 +1,10 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { ShoppingBag, ChevronLeft, Trash, Plus, Minus } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Button from '@/components/ui/Button';
+import LinkButton from '@/components/ui/LinkButton';
 import { toast } from '@/hooks/use-toast';
 
 // This is a demo cart for now
@@ -73,9 +73,9 @@ const Cart: React.FC = () => {
                     {/* Product Details */}
                     <div className="flex-1">
                       <div className="flex justify-between">
-                        <Link to={`/product/${item.id}`} className="font-medium hover:text-primary transition-colors">
+                        <LinkButton to={`/product/${item.id}`} className="font-medium hover:text-primary transition-colors">
                           {item.name}
-                        </Link>
+                        </LinkButton>
                         <button 
                           onClick={() => handleRemoveItem(item.id)}
                           className="text-muted-foreground hover:text-destructive transition-colors"
@@ -110,12 +110,13 @@ const Cart: React.FC = () => {
                 ))}
                 
                 <div className="mt-8">
-                  <Link 
+                  <LinkButton 
                     to="/shop" 
                     className="inline-flex items-center text-primary hover:text-primary/80 transition-colors"
+                    variant="ghost"
                   >
                     <ChevronLeft className="h-4 w-4 mr-1" /> Continue Shopping
-                  </Link>
+                  </LinkButton>
                 </div>
               </div>
               
@@ -141,14 +142,13 @@ const Cart: React.FC = () => {
                     </div>
                   </div>
                   
-                  <Button 
+                  <LinkButton 
                     className="w-full mt-6"
                     size="lg"
-                    as={Link}
                     to="/checkout"
                   >
                     Proceed to Checkout
-                  </Button>
+                  </LinkButton>
                 </div>
               </div>
             </div>
@@ -157,9 +157,9 @@ const Cart: React.FC = () => {
               <ShoppingBag className="h-16 w-16 mx-auto mb-4 text-muted-foreground" />
               <h2 className="text-2xl font-display font-medium mb-2">Your cart is empty</h2>
               <p className="text-muted-foreground mb-6">Looks like you haven't added any products to your cart yet.</p>
-              <Button as={Link} to="/shop">
+              <LinkButton to="/shop">
                 Start Shopping
-              </Button>
+              </LinkButton>
             </div>
           )}
         </div>
